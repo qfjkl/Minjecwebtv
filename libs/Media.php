@@ -144,7 +144,8 @@ class Media extends cat_has_media{
 // ------------------------------------mise à jour des médias -------------------------------
 
 	public function updateMedia($where,$item){
-
+		
+		include("database.php");
 		$req=$bd->prepare("UPDATE medias WHERE media_auteur=?");
 		$req->execute(array($where));
 	}
@@ -152,7 +153,8 @@ class Media extends cat_has_media{
 // ------------------------------------suppression des médias -------------------------------
 
 	public function deleteMedia($where,$item){
-
+		
+		include("database.php");
 		$req=$bd->prepare("DELETE medias WHERE media_auteur=?");
 		$req->execute(array($where));
 
