@@ -33,7 +33,7 @@ class cats{
     
     include("database.php");
   
-    $req=$bd->query("SELECT * FROM medias");  
+    $bool=$req=$bd->query("SELECT * FROM medias");  
     $data=array();
       // compteur 
     $i=0;          
@@ -55,14 +55,36 @@ class cats{
     }
     
   }
-  public function updateCats(){
+  public function updateCats($where){
     
-    
+    include("database.php");
+    $bool=$req=$bd->prepare("UPDATE medias WHERE media_auteur=?");
+    $req->execute(array($where));
+
+    if($bool){
+      
+      return true;
+    }
+    else{
+      
+      return false;
+    }  
+  
   }
-  public function deleteCats(){
+  public function deleteCats($where){
     
+    include("database.php");
+    $bool=$req=$bd->prepare("DELETE medias WHERE media_auteur=?");
+    $req->execute(array($where));  
+    
+    if($bool){
+      
+      return true;
+    }
+    else{
+      
+      return false;
+    }      
   }
-  
-  
-  
-}
+}  
+
