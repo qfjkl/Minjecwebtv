@@ -1,6 +1,6 @@
 <?php
 
-class Media{
+class Media extends cat_has_media{
 	
 	public function __construct(){
 
